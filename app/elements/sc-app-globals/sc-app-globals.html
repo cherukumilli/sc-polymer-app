@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-app-globals" attributes="scAppGlobals">
+  <script>
+    (function() {
+
+      var page = {
+          'sc-page1': {
+            icon: 'home',
+            title: 'Page 1'
+          },
+          'sc-page2': {
+            icon: 'settings',
+            title: 'Page 2'
+          },
+          'sc-page3': {
+            icon: 'add',
+            title: 'Page 3'
+          },
+          'sc-page4': {
+            icon: 'favorite',
+            title: 'Page 4'
+          },
+          'sc-page5': {
+            icon: 'search',
+            title: 'Page 5'
+          },
+          // MORE MENU
+          'sc-more-menu': {
+            icon: 'menu',
+            title: 'More'
+          }
+      };
+
+      var values = {
+        page: page,
+      };
+
+      Polymer('sc-app-globals', {
+        ready: function() {
+          this.scAppGlobals = values;
+        }
+      });
+    })();
+  </script>
+</polymer-element>

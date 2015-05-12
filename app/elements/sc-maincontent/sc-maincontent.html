@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-maincontent" attributes="currentPage scAppGlobals" vertical layout flex block relative>
+  <template>
+
+    <style>
+      :host {
+          display: block;
+      }
+    </style>
+
+    <flatiron-director route="{{currentPage}}" autoHash></flatiron-director>
+
+    <core-animated-pages id="scPages" selected="{{currentPage}}" valueattr="scPage" transitions="slide-from-right" fit>
+        <sc-page1 currentPage="{{currentPage}}" scAppGlobals="{{scAppGlobals}}" scPage="sc-page1"> </sc-page1>
+        <sc-page2 currentPage="{{currentPage}}" scAppGlobals="{{scAppGlobals}}" scPage="sc-page2"> </sc-page2>
+        <sc-page3 currentPage="{{currentPage}}" scAppGlobals="{{scAppGlobals}}" scPage="sc-page3"> </sc-page3>
+        <sc-page4 currentPage="{{currentPage}}" scAppGlobals="{{scAppGlobals}}" scPage="sc-page4"> </sc-page4>
+        <sc-page5 currentPage="{{currentPage}}" scAppGlobals="{{scAppGlobals}}" scPage="sc-page5"> </sc-page5>
+    </core-animated-pages>
+
+  </template>
+  <script>
+    (function() {
+      Polymer('sc-maincontent', {
+        domReady: function() {
+          this.currentPage = 'sc-page1';
+        }
+      });
+    })();
+  </script>
+</polymer-element>

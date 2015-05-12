@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-splash" attributes="hideSplash splashTimeOut">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      #imageDiv {
+        background-color: #AA113F;
+      }
+    </style>
+
+    <div id="imageDiv" fit vertical layout center-center>
+      <img src="../../images/sc-splash-196x196.png" />
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      Polymer('sc-splash', {
+        splashTimeOut: 2000, //default splash timeout to 2 seconds
+
+        domReady: function() {
+          this.async(function() {
+            this.hidden = true;
+            this.hideSplash = true;
+          }, null, this.splashTimeOut);
+        }
+      });
+    })();
+  </script>
+</polymer-element>

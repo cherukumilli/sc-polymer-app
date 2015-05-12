@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-page1" attributes="currentPage scAppGlobals" vertical layout flex block>
+  <template>
+    <style>
+      :host {
+      }
+    </style>
+
+    Page 1
+  </template>
+  <script>
+    (function() {
+      Polymer('sc-page1', {
+        /**
+         * currentPageChanged - refresh the data when the user navigates to this page
+         */
+        currentPageChanged: function(oldValue, newValue) {
+          if (newValue === this.tagName.toLowerCase()) {
+            this.scRefresh();
+          }
+        },
+
+        scRefresh: function() {
+          this.async(function() {
+              //Todo - add your code here
+          });
+        }
+      });
+    })();
+  </script>
+</polymer-element>

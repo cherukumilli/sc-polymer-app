@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-header-middle" attributes="currentPage scAppGlobals" layout horizontal center>
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-size: 0.8em;
+      }
+
+      #pageTitle {
+        color: white;
+      }
+    </style>
+
+    <span id="pageTitle">{{pageTitle}}</span>
+
+  </template>
+
+  <script>
+    (function() {
+      Polymer('sc-header-middle', {
+        currentPageChanged: function(oldValue, newValue) {
+          if (newValue) {
+            this.pageTitle = this.scAppGlobals.page[newValue].title;
+          }
+        }
+      });
+    })();
+  </script>
+</polymer-element>

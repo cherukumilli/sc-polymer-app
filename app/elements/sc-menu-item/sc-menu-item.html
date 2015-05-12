@@ -1,0 +1,37 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-menu-item" attributes="scAppGlobals scPage" noscript>
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-item.core-selected {
+        color: #AA113F;
+        background-color: #ffffff;
+      }
+
+      paper-item,
+      paper-item > div {
+        width: 100%;
+      }
+      /*ripple effect color for item*/
+
+      paper-item::shadow #ripple {
+        color: #AA113F;
+      }
+
+      paper-item:hover {
+        background: #eee;
+      }
+    </style>
+
+    <paper-item recenteringTouch="true">
+      <div layout horizontal center>
+        <paper-icon-button icon="{{scAppGlobals.page[scPage].icon}}" title="{{scAppGlobals.page[scPage].title}}"></paper-icon-button>
+        <div>{{scAppGlobals.page[scPage].title}}</div>
+      </div>
+    </paper-item>
+  </template>
+</polymer-element>

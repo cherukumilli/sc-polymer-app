@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-header-right" attributes="currentPage scAppGlobals" layout horizontal center>
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-size: 0.7em;
+      }
+    </style>
+
+    <!-- Good place to put avatar / user profile icon -->
+    <paper-icon-button on-tap="{{userProfileClicked}}" icon="account-circle" title="User profile"></paper-icon-button>
+
+  </template>
+
+  <script>
+      (function() {
+        Polymer('sc-header-right', {
+          avatarClicked: function() {
+              // Todo - add your code here
+            console.log('avatar clicked');
+          }
+        });
+      })();
+    </script>
+
+</polymer-element>

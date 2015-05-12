@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-menu" attributes="currentPage scAppGlobals" noscript>
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      core-menu {
+        color: #B0B0B0;
+      }
+
+      core-menu sc-menu-item.core-selected {
+        color: #AA113F;
+        background-color: #ffffff;
+      }
+    </style>
+
+    <core-menu theme="core-light-theme" selected="{{currentPage}}" valueattr="scPage">
+        <sc-menu-item scPage="sc-page1" scAppGlobals="{{scAppGlobals}}"></sc-menu-item>
+        <sc-menu-item scPage="sc-page2" scAppGlobals="{{scAppGlobals}}"></sc-menu-item>
+        <sc-menu-item scPage="sc-page3" scAppGlobals="{{scAppGlobals}}"></sc-menu-item>
+        <sc-menu-item scPage="sc-page4" scAppGlobals="{{scAppGlobals}}"></sc-menu-item>
+        <sc-menu-item scPage="sc-page5" scAppGlobals="{{scAppGlobals}}"></sc-menu-item>
+    </core-menu>
+
+  </template>
+</polymer-element>

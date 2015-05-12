@@ -1,0 +1,90 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-scaffold" attributes="scAppGlobals">
+  <template>
+    <style>
+      :host {
+        display: block;
+        background-color: #AA113F;
+      }
+
+      core-scaffold /deep/ core-toolbar {
+        background: #AA113F;
+        color: #ffffff;
+      }
+
+      #scMenuToolbar {
+        background: #F6E7EC;
+        color: #AA113F;
+      }
+
+      #scHeaderRight {
+        margin: 0px;
+        padding: 0px;
+        height: 100%;
+      }
+      #scHeaderLeft, #scHeaderMiddle {
+        height: 100%;
+      }
+    </style>
+
+    <core-scaffold id="scMainCoreScaffold" responsiveWidth="{{scScreenWidth}}">
+      <!-- Drawer Panel and its contents -->
+      <core-header-panel navigation flex mode="seamed" isNarrow="{{isNarrow}}">
+        <core-toolbar id="scMenuToolbar">
+          <img src="../../images/sc-toolbar-icon-24x24.png">
+          Polymer app
+        </core-toolbar>
+        <sc-menu currentPage="{{currentPage}}" scAppGlobals="{{scAppGlobals}}"></sc-menu>
+      </core-header-panel>
+
+      <!-- Navigation Bar / Header section -->
+      <div id="scHeaderLeft" tool horizontal layout start-justified>
+        <sc-header-left></sc-header-left>
+      </div>
+      <div id="scHeaderMiddle" tool flex horizontal layout>
+        <sc-header-middle currentPage="{{currentPage}}" scAppGlobals="{{scAppGlobals}}"></sc-header-middle>
+      </div>
+      <div id="scHeaderRight" tool horizontal layout end-justified>
+        <sc-header-right currentPage="{{currentPage}}" scAppGlobals="{{scAppGlobals}}"></sc-header-right>
+      </div>
+
+      <!-- Main section with animated pages -->
+      <div fit vertical layout relative>
+        <sc-maincontent currentPage="{{currentPage}}" scAppGlobals="{{scAppGlobals}}"> </sc-maincontent>
+
+        <!-- Footer section -->
+        <template if="{{isNarrow}}">
+          <sc-footer currentPage="{{currentPage}}" scAppGlobals="{{scAppGlobals}}" scScaffold="{{$.scMainCoreScaffold}}"></sc-footer>
+        </template>
+      </div>
+    </core-scaffold>
+
+    <!-- detect when window is narrow -->
+    <core-media-query query="max-width: {{scScreenWidth}}" queryMatches="{{isNarrow}}">
+    </core-media-query>
+
+  </template>
+
+  <script>
+    (function() {
+      Polymer('sc-scaffold', {
+        isNarrow: false,
+        currentPageChanged: function(oldValue, newValue) {
+          // if the screen is narrow (mobile device)
+          // and if the drawer is open then close it
+          if (this.isNarrow && !this.$.scMainCoreScaffold.$.drawerPanel.isMainSelected()) {
+            this.$.scMainCoreScaffold.closeDrawer();
+          }
+        },
+        isNarrowChanged: function(oldValue, newValue) {
+          //hide the hamburger menu button even if the screen is narrow
+          if (newValue) {
+            this.$.scMainCoreScaffold.$.menuButton.style.display = 'none';
+          }
+        }
+      });
+    })();
+  </script>
+
+</polymer-element>

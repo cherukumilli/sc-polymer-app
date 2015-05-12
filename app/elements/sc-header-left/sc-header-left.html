@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-header-left" layout horizontal center>
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-size: 0.7em;
+      }
+    </style>
+
+    <paper-icon-button on-tap="{{backClicked}}" icon="arrow-back" title="Back"></paper-icon-button>
+    <paper-icon-button on-tap="{{forwardClicked}}" icon="arrow-forward" title="Forward"></paper-icon-button>
+  </template>
+
+  <script>
+    (function() {
+      Polymer('sc-header-left', {
+        backClicked: function() {
+          window.history.back();
+        },
+        forwardClicked: function() {
+          window.history.forward();
+        }
+      });
+    })();
+  </script>
+</polymer-element>

@@ -1,0 +1,47 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-footer" attributes="currentPage scAppGlobals scScaffold">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-tabs {
+        background-color: #fcfcfc;
+        color: #b0b0b0;
+        font-size: 0.7em;
+      }
+
+      paper-tabs sc-footer-tab.core-selected {
+        color: #AA113F;
+      }
+
+      paper-tabs::shadow #selectionBar {
+        background-color: #AA113F;
+      }
+    </style>
+
+    <paper-tabs selected="{{currentPage}}" valueattr="scPage" alignBottom>
+        <sc-footer-tab flex scAppGlobals="{{scAppGlobals}}" scPage="sc-page1"></sc-footer-tab>
+        <sc-footer-tab flex scAppGlobals="{{scAppGlobals}}" scPage="sc-page2"></sc-footer-tab>
+        <sc-footer-tab flex scAppGlobals="{{scAppGlobals}}" scPage="sc-page3"></sc-footer-tab>
+        <sc-footer-tab flex scAppGlobals="{{scAppGlobals}}" scPage="sc-page4"></sc-footer-tab>
+        <sc-footer-tab flex scAppGlobals="{{scAppGlobals}}" scPage="sc-more-menu" on-tap="{{showMenu}}"></sc-footer-tab>
+    </paper-tabs>
+  </template>
+
+  <script>
+    (function() {
+
+      Polymer('sc-footer', {
+        showMenu: function(e) {
+          e.stopPropagation();
+          e.preventDefault();
+          this.scScaffold.openDrawer();
+        }
+      });
+
+    })();
+  </script>
+</polymer-element>

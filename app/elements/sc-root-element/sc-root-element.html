@@ -1,0 +1,17 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-root-element" noscript>
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <sc-app-globals scAppGlobals="{{scAppGlobals}}"></sc-app-globals>
+
+    <sc-splash hideSplash="{{hideSplash}}"></sc-splash>
+    <sc-scaffold hidden?="{{!hideSplash}}" scAppGlobals="{{scAppGlobals}}"></sc-scaffold>
+  </template>
+
+</polymer-element>

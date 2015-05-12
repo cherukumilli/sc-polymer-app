@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="sc-footer-tab" attributes="scAppGlobals scPage" noscript>
+  <template>
+    <style>
+      :host {
+        display: block;
+        position: relative;
+      }
+
+      paper-tab.core-selected {
+        color: #AA113F;
+      }
+
+      paper-tab paper-icon-button {
+        padding: 3px;
+      }
+
+      paper-tab > div > div {
+        padding-bottom: 3px;
+      }
+
+      paper-tab::shadow #ink {
+        color: #AA113F;
+      }
+
+      paper-tab:hover {
+        background: #eee;
+      }
+    </style>
+    <paper-tab fit>
+      <div layout vertical center-center>
+        <paper-icon-button icon="{{scAppGlobals.page[scPage].icon}}" title="{{scAppGlobals.page[scPage].title}}"></paper-icon-button>
+        <div>{{scAppGlobals.page[scPage].title}}</div>
+      </div>
+    </paper-tab>
+  </template>
+</polymer-element>
