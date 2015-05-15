@@ -10,5 +10,4 @@ Please do the following:
 
 4. bower install && npm install
 
-To start the app locally run:
-5. grunt serve
+5. grunt serve   (this starts the app locally)
