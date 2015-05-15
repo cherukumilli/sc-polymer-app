@@ -8,8 +8,9 @@
         position: relative;
       }
 
-      paper-tab.core-selected {
+      :host(.core-selected) paper-tab::shadow .tab-content {
         color: #AA113F;
+        opacity: 1;
       }
 
       paper-tab paper-icon-button {

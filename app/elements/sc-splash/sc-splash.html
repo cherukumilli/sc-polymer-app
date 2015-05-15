@@ -19,10 +19,12 @@
   <script>
     (function() {
       Polymer('sc-splash', {
-        splashTimeOut: 2000, //default splash timeout to 2 seconds
+        splashTimeOut: 500, //default splash timeout to 2 seconds
 
         domReady: function() {
+          console.log('domReady splash');
           this.async(function() {
+            console.log('hiding splash');
             this.hidden = true;
             this.hideSplash = true;
           }, null, this.splashTimeOut);

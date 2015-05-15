@@ -1,0 +1,5 @@
+{
+  "name": "sc-polymer-app",
+  "root": "./dist",
+  "error_page": "error.html"
+}

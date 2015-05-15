@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="app-root-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <template if="{{loadScaffold}}">
+      <sc-app-globals scAppGlobals="{{scAppGlobals}}"></sc-app-globals>
+      <sc-scaffold hidden?="{{!hideSplash}}" scAppGlobals="{{scAppGlobals}}"></sc-scaffold>
+    </template>
+  </template>
+
+  <script>
+    (function() {
+      Polymer('app-root-element', {
+        loadScaffold: false,
+        hideSplash: false,
+        domReady: function() {
+          this.async(function(){
+            this.hideSplash = true;
+          }, null, 2000);
+
+          this.async(function(){
+            // <!-- will be replaced with elements/elements.vulcanized.html -->
+            Polymer.import(['elements/elements.html'], function(){
+            // <!-- endreplace -->
+             console.log('imported elements.html');
+             this.loadScaffold = true;
+            }.bind(this));
+            });
+        }
+      });
+    })();
+  </script>
+
+</polymer-element>

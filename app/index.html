@@ -3,32 +3,156 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>poly foo</title>
+  <meta name="description" content="sample polymer app">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
+  <title>SC Polymer App</title>
+
+  <style>body {transition: opacity ease-in 0.2s; }
+  body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; }
+  </style>
+
+  <style shim-shadowdom>
+    body {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-touch-callout: none;
+      margin: 0;
+      background-color: #AA113F;
+      background-position: center;
+      background-image: url(images/sc-splash-196x196.png);
+      background-repeat: no-repeat;
+       /*width: 100%;*/
+       /*height: 100%;*/
+    }
+
+    body /deep/ *{
+        font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+    }
+  </style>
+
+  <!-- Add to homescreen meta -->
+  <!-- from realfavicongenerator.net -->
+  <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="manifest.json">
+  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileImage" content="mstile-144x144.png">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="theme-color" content="#AA113F">
+  <!-- end real fav icon -->
+
+
+  <!-- Turn on IE cleartype -->
+  <meta http-equiv="cleartype" content="on">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+    [touch-action="none"] {
+      -ms-touch-action: none;
+      touch-action: none;
+    }
+
+    html /deep/ [touch-action="none"] {
+      -ms-touch-action: none;
+      touch-action: none;
+    }
+
+    [touch-action="auto"] {
+      -ms-touch-action: auto;
+      touch-action: auto;
+    }
+
+    html /deep/ [touch-action="auto"] {
+      -ms-touch-action: auto;
+      touch-action: auto;
+    }
+
+    [touch-action="pan-x"] {
+      -ms-touch-action: pan-x;
+      touch-action: pan-x;
+    }
+
+    html /deep/ [touch-action="pan-x"] {
+      -ms-touch-action: pan-x;
+      touch-action: pan-x;
+    }
+
+    [touch-action="pan-y"] {
+      -ms-touch-action: pan-y;
+      touch-action: pan-y;
+    }
+
+    html /deep/ [touch-action="pan-y"] {
+      -ms-touch-action: pan-y;
+      touch-action: pan-y;
+    }
+
+    [touch-action="pan-x pan-y"],
+    [touch-action="pan-y pan-x"] {
+      -ms-touch-action: pan-x pan-y;
+      touch-action: pan-x pan-y;
+    }
+
+    html /deep/ [touch-action="pan-x pan-y"],
+    html /deep/ [touch-action="pan-y pan-x"] {
+      -ms-touch-action: pan-x pan-y;
+      touch-action: pan-x pan-y;
+    }
+
+    [touch-action="manipulation"] {
+      -ms-touch-action: manipulation;
+      touch-action: manipulation;
+    }
+
+    html /deep/ [touch-action="manipulation"] {
+      -ms-touch-action: manipulation;
+      touch-action: manipulation;
+    }
+  </style>
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="sample polymer app">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Sample Polymer App">
+
+
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-  <!-- build:css styles/main.css -->
-  <link rel="stylesheet" href="styles/main.css">
-  <!-- endbuild-->
+  <!-- Conditionally load WC polyfills -->
+  <!-- Thanks to https://github.com/geelen/x-gif for the snippet -->
+  <script>
+    if ('registerElement' in document && 'createShadowRoot' in HTMLElement.prototype && 'import' in document.createElement('link') && 'content' in document.createElement('template')) {
+      // We're using a browser with native WC support!
+    } else {
+      document.write('<script src="bower_components/webcomponentsjs/webcomponents.min.js"><\/script>');
+    }
+  </script>
 
-  <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
-  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-  <!-- endbuild -->
-
-  <!-- will be replaced with elements/elements.vulcanized.html -->
-  <link rel="import" href="elements/elements.html">
+  <!-- will be replaced with elements/app-root-elements.vulcanized.html -->
+  <link rel="import" href="elements/app-root-elements.html">
   <!-- endreplace-->
+
 </head>
 
 <body unresolved fullbleed layout vertical>
   <template is="auto-binding" id="app">
-      <sc-root-element></sc-root-element>
+    <app-root-element></app-root-element>
   </template>
-
-  <!-- build:js scripts/app.js -->
-  <script src="scripts/app.js"></script>
-  <!-- endbuild-->
 </body>
 
 </html>
