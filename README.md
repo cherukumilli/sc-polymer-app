@@ -11,3 +11,5 @@ Please do the following:
 4. bower install && npm install
 
 5. grunt serve   (this starts the app locally)
+
+6. Demo App: https://sc-polymer-app.divshot.io
